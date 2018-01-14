@@ -1,0 +1,103 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ManagerFollowMe
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-SymbolicName: ManagerFollowMe
+Bundle-Version: 1.0.0.qualifier
+Created-By: iPOJO 1.12.1
+Import-Package: fr.esisar.cs511.followme.service.spec, fr.liglab.adele
+ .icasa, fr.liglab.adele.icasa.access, fr.liglab.adele.icasa.access.co
+ mmand, fr.liglab.adele.icasa.application, fr.liglab.adele.icasa.appli
+ cation.impl, fr.liglab.adele.icasa.application.impl.command, fr.ligla
+ b.adele.icasa.application.remote, fr.liglab.adele.icasa.application.r
+ emote.util, fr.liglab.adele.icasa.clockservice, fr.liglab.adele.icasa
+ .clockservice.impl, fr.liglab.adele.icasa.clockservice.util, fr.ligla
+ b.adele.icasa.command, fr.liglab.adele.icasa.command.handler, fr.ligl
+ ab.adele.icasa.commands, fr.liglab.adele.icasa.commands.impl, fr.ligl
+ ab.adele.icasa.common, fr.liglab.adele.icasa.common.impl, fr.liglab.a
+ dele.icasa.common.xml.utils, fr.liglab.adele.icasa.dependency.manager
+ .exception, fr.liglab.adele.icasa.device, fr.liglab.adele.icasa.devic
+ e.bathroomscale, fr.liglab.adele.icasa.device.box, fr.liglab.adele.ic
+ asa.device.button, fr.liglab.adele.icasa.device.button.simulated, fr.
+ liglab.adele.icasa.device.doorWindow, fr.liglab.adele.icasa.device.ga
+ sSensor, fr.liglab.adele.icasa.device.light, fr.liglab.adele.icasa.de
+ vice.manager, fr.liglab.adele.icasa.device.motion, fr.liglab.adele.ic
+ asa.device.power, fr.liglab.adele.icasa.device.presence, fr.liglab.ad
+ ele.icasa.device.security, fr.liglab.adele.icasa.device.settopbox, fr
+ .liglab.adele.icasa.device.sound, fr.liglab.adele.icasa.device.sprink
+ ler, fr.liglab.adele.icasa.device.temperature, fr.liglab.adele.icasa.
+ device.util, fr.liglab.adele.icasa.exception, fr.liglab.adele.icasa.f
+ rontend.services, fr.liglab.adele.icasa.frontend.services.rest, fr.li
+ glab.adele.icasa.frontend.services.utils, fr.liglab.adele.icasa.liste
+ ner, fr.liglab.adele.icasa.location, fr.liglab.adele.icasa.location.i
+ mpl, fr.liglab.adele.icasa.location.util, fr.liglab.adele.icasa.remot
+ e.wisdom, fr.liglab.adele.icasa.remote.wisdom.util, fr.liglab.adele.i
+ casa.service.location, fr.liglab.adele.icasa.service.preferences, fr.
+ liglab.adele.icasa.service.scheduler, fr.liglab.adele.icasa.service.z
+ one.dimension.calculator, fr.liglab.adele.icasa.service.zone.size.cal
+ culator, fr.liglab.adele.icasa.simulator, fr.liglab.adele.icasa.simul
+ ator.listener, fr.liglab.adele.icasa.simulator.listener.util, fr.ligl
+ ab.adele.icasa.simulator.remote.wisdom.util, fr.liglab.adele.icasa.si
+ mulator.script.executor, fr.liglab.adele.icasa.simulator.services, or
+ g.apache.felix.ipojo;version="[1.12.1,2.0.0)", org.apache.felix.ipojo
+ .architecture;version="[1.12.1,2.0.0)", org.json, org.osgi.service.cm
+ ;version=1.2, org.osgi.service.log;version=1.3
+iPOJO-Components: instance { $component="FollowMeManager" $name="Follo
+ wMeManager" }instance { $name="followme.commande.impl" $component="fr
+ .esisar.cs511.followme.commande.impl.FollowMeCommandImpl" }component 
+ { $classname="fr.esisar.cs511.followme.manager.impl.FollowMeManagerIm
+ pl" $name="FollowMeManager" callback { $method="start" $transition="v
+ alidate" }callback { $method="stop" $transition="invalidate" }require
+ s { $optional="true" $specification="fr.esisar.cs511.followme.service
+ .spec.FollowMeConfiguration" $field="maxLightConfiguration" }provides
+  { $specifications="fr.esisar.cs511.followme.service.spec.FollowMeAdm
+ inistration" }manipulation { $classname="fr.esisar.cs511.followme.man
+ ager.impl.FollowMeManagerImpl" interface { $name="fr.esisar.cs511.fol
+ lowme.service.spec.FollowMeAdministration" }field { $name="maxLightCo
+ nfiguration" $type="fr.esisar.cs511.followme.service.spec.FollowMeCon
+ figuration" }method { $name="binConfiguration" $arguments="{fr.esisar
+ .cs511.followme.service.spec.FollowMeConfiguration,java.util.Map}" $n
+ ames="{followMeConfiguration,properties}" }method { $name="unbindConf
+ iguration" $arguments="{fr.esisar.cs511.followme.service.spec.FollowM
+ eConfiguration,java.util.Map}" $names="{followMeConfiguration,propert
+ ies}" }method { $name="stop" }method { $name="start" }method { $name=
+ "askProviderCurrentMaxLight" $return="int" }method { $name="askProvid
+ erToChangeMaxLight" $arguments="{int}" $names="{newValue}" }method { 
+ $name="askProviderCurrentTargetIlluminance" $return="double" }method 
+ { $name="askProviderToChangeTargetIlluminance" $arguments="{double}" 
+ $names="{newValue}" }method { $name="askProviderCurrentlyMaxConsumpti
+ on" $return="double" }method { $name="askProviderToChangeMaxConsumpti
+ on" $arguments="{double}" $names="{newMaxValue}" }method { $name="set
+ IlluminancePreference" $arguments="{fr.esisar.cs511.followme.service.
+ spec.IlluminanceGoal}" $names="{illuminanceGoal}" }method { $name="ge
+ tIlluminancePreference" $return="fr.esisar.cs511.followme.service.spe
+ c.IlluminanceGoal" }method { $name="setEnergySavingGoal" $arguments="
+ {fr.esisar.cs511.followme.service.spec.EnergyGoal}" $names="{energyGo
+ al}" }method { $name="getEnergyGoal" $return="fr.esisar.cs511.followm
+ e.service.spec.EnergyGoal" }}}component { $name="fr.esisar.cs511.foll
+ owme.commande.impl.FollowMeCommandImpl" $classname="fr.esisar.cs511.f
+ ollowme.commande.impl.FollowMeCommandImpl" fr.liglab.adele.icasa.comm
+ and.handler:commandprovider { $namespace="followme" fr.liglab.adele.i
+ casa.command.handler:command { $method="setIlluminancePreference" }fr
+ .liglab.adele.icasa.command.handler:command { $method="setEnergyPrefe
+ rence" }fr.liglab.adele.icasa.command.handler:command { $method="getI
+ lluminancePreference" }fr.liglab.adele.icasa.command.handler:command 
+ { $method="getEnergyPreference" }}requires { $field="administrationSe
+ rvice" }callback { $transition="invalidate" $method="stop" }callback 
+ { $transition="validate" $method="start" }manipulation { $classname="
+ fr.esisar.cs511.followme.commande.impl.FollowMeCommandImpl" field { $
+ name="administrationService" $type="fr.esisar.cs511.followme.service.
+ spec.FollowMeAdministration" }method { $name="stop" }method { $name="
+ start" }method { $name="askProviderCurrentlyIlluminanceGoal" $return=
+ "fr.esisar.cs511.followme.service.spec.IlluminanceGoal" }method { $na
+ me="askProviderToChangeIlluminanceGoal" $arguments="{fr.esisar.cs511.
+ followme.service.spec.IlluminanceGoal}" $names="{illuminanceGoal}" }m
+ ethod { $name="askProviderCurrentlyEnergyGoal" $return="fr.esisar.cs5
+ 11.followme.service.spec.EnergyGoal" }method { $name="askProviderToCh
+ angeEnergyGoal" $arguments="{fr.esisar.cs511.followme.service.spec.En
+ ergyGoal}" $names="{energyGoal}" }method { $name="setIlluminancePrefe
+ rence" $arguments="{java.lang.String}" $names="{goal}" }method { $nam
+ e="setEnergyPreference" $arguments="{java.lang.String}" $names="{goal
+ }" }method { $name="getIlluminancePreference" }method { $name="getEne
+ rgyPreference" }}}
+

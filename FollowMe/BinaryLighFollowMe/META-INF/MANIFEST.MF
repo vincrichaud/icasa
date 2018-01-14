@@ -1,0 +1,133 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: BinaryLighFollowMe
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-SymbolicName: BinaryLighFollowMe
+Bundle-Version: 1.0.0.qualifier
+Created-By: iPOJO 1.12.1
+Import-Package: fr.esisar.cs511.followme.service.spec, fr.liglab.adele
+ .icasa, fr.liglab.adele.icasa.access, fr.liglab.adele.icasa.access.co
+ mmand, fr.liglab.adele.icasa.application, fr.liglab.adele.icasa.appli
+ cation.impl, fr.liglab.adele.icasa.application.impl.command, fr.ligla
+ b.adele.icasa.application.remote, fr.liglab.adele.icasa.application.r
+ emote.util, fr.liglab.adele.icasa.clockservice, fr.liglab.adele.icasa
+ .clockservice.impl, fr.liglab.adele.icasa.clockservice.util, fr.ligla
+ b.adele.icasa.command, fr.liglab.adele.icasa.command.handler, fr.ligl
+ ab.adele.icasa.commands, fr.liglab.adele.icasa.commands.impl, fr.ligl
+ ab.adele.icasa.common, fr.liglab.adele.icasa.common.impl, fr.liglab.a
+ dele.icasa.common.xml.utils, fr.liglab.adele.icasa.dependency.manager
+ .exception, fr.liglab.adele.icasa.device, fr.liglab.adele.icasa.devic
+ e.bathroomscale, fr.liglab.adele.icasa.device.box, fr.liglab.adele.ic
+ asa.device.button, fr.liglab.adele.icasa.device.button.simulated, fr.
+ liglab.adele.icasa.device.doorWindow, fr.liglab.adele.icasa.device.ga
+ sSensor, fr.liglab.adele.icasa.device.light, fr.liglab.adele.icasa.de
+ vice.manager, fr.liglab.adele.icasa.device.motion, fr.liglab.adele.ic
+ asa.device.power, fr.liglab.adele.icasa.device.presence, fr.liglab.ad
+ ele.icasa.device.security, fr.liglab.adele.icasa.device.settopbox, fr
+ .liglab.adele.icasa.device.sound, fr.liglab.adele.icasa.device.sprink
+ ler, fr.liglab.adele.icasa.device.temperature, fr.liglab.adele.icasa.
+ device.util, fr.liglab.adele.icasa.exception, fr.liglab.adele.icasa.f
+ rontend.services, fr.liglab.adele.icasa.frontend.services.rest, fr.li
+ glab.adele.icasa.frontend.services.utils, fr.liglab.adele.icasa.liste
+ ner, fr.liglab.adele.icasa.location, fr.liglab.adele.icasa.location.i
+ mpl, fr.liglab.adele.icasa.location.util, fr.liglab.adele.icasa.remot
+ e.wisdom, fr.liglab.adele.icasa.remote.wisdom.util, fr.liglab.adele.i
+ casa.service.location, fr.liglab.adele.icasa.service.preferences, fr.
+ liglab.adele.icasa.service.scheduler, fr.liglab.adele.icasa.service.z
+ one.dimension.calculator, fr.liglab.adele.icasa.service.zone.size.cal
+ culator, fr.liglab.adele.icasa.simulator, fr.liglab.adele.icasa.simul
+ ator.listener, fr.liglab.adele.icasa.simulator.listener.util, fr.ligl
+ ab.adele.icasa.simulator.remote.wisdom.util, fr.liglab.adele.icasa.si
+ mulator.script.executor, fr.liglab.adele.icasa.simulator.services, or
+ g.apache.felix.ipojo;version="[1.12.1,2.0.0)", org.apache.felix.ipojo
+ .architecture;version="[1.12.1,2.0.0)", org.json, org.osgi.service.cm
+ ;version=1.2, org.osgi.service.log;version=1.3
+iPOJO-Components: instance { $component="BinaryFollowMe" $name="Binary
+ FollowMe" }component { $classname="fr.esisar.cs511.followme.impl.Bina
+ ryFollowMeImpl" $name="BinaryFollowMe" requires { $aggregate="true" $
+ optional="true" $specification="fr.liglab.adele.icasa.device.light.Bi
+ naryLight" $field="binaryLights" callback { $method="bindBinaryLight"
+  $type="bind" }callback { $method="unbindBinaryLight" $type="unbind" 
+ }}requires { $aggregate="true" $optional="true" $specification="fr.li
+ glab.adele.icasa.device.presence.PresenceSensor" $field="presenceSens
+ ors" callback { $method="bindPresenceSensor" $type="bind" }callback {
+  $method="unbindPresenceSensor" $type="unbind" }}requires { $aggregat
+ e="true" $optional="true" $specification="fr.liglab.adele.icasa.devic
+ e.light.DimmerLight" $field="dimmerLights" callback { $method="bindDi
+ mmerLight" $type="bind" }callback { $method="unbindDimmerLight" $type
+ ="unbind" }}requires { $aggregate="true" $optional="true" $specificat
+ ion="fr.liglab.adele.icasa.device.light.Photometer" $field="photoMete
+ rs" callback { $method="bindPhotoMeter" $type="bind" }callback { $met
+ hod="unbindPhotoMeter" $type="unbind" }}requires { $optional="true" $
+ specification="fr.liglab.adele.icasa.service.zone.size.calculator.Zon
+ eSizeCalculator" $field="zoneSizeCalculator" }callback { $method="sta
+ rt" $transition="validate" }callback { $method="stop" $transition="in
+ validate" }provides { $specifications="fr.esisar.cs511.followme.servi
+ ce.spec.FollowMeConfiguration" }manipulation { $classname="fr.esisar.
+ cs511.followme.impl.BinaryFollowMeImpl" interface { $name="fr.liglab.
+ adele.icasa.device.DeviceListener" }interface { $name="fr.esisar.cs51
+ 1.followme.service.spec.FollowMeConfiguration" }field { $name="binary
+ Lights" $type="fr.liglab.adele.icasa.device.light.BinaryLight[]" }fie
+ ld { $name="dimmerLights" $type="fr.liglab.adele.icasa.device.light.D
+ immerLight[]" }field { $name="maxLightsToTurnOnPerRoom" $type="int" }
+ field { $name="maxLightsToTurnOnRest" $type="double" }field { $name="
+ maxLightsToTurnOnRestToTarget" $type="double" }field { $name="maxLigh
+ tsToTurnOnToTarget" $type="int" }field { $name="maximumEnergyConsumpt
+ ionAllowedInARoom" $type="double" }field { $name="photoMeters" $type=
+ "fr.liglab.adele.icasa.device.light.Photometer[]" }field { $name="pre
+ senceSensors" $type="fr.liglab.adele.icasa.device.presence.PresenceSe
+ nsor[]" }field { $name="targetedIlluminancePerRoom" $type="double" }f
+ ield { $name="zoneSizeCalculator" $type="fr.liglab.adele.icasa.servic
+ e.zone.size.calculator.ZoneSizeCalculator" }method { $name="bindBinar
+ yLight" $arguments="{fr.liglab.adele.icasa.device.light.BinaryLight,j
+ ava.util.Map}" $names="{binaryLight,properties}" }method { $name="unb
+ indBinaryLight" $arguments="{fr.liglab.adele.icasa.device.light.Binar
+ yLight,java.util.Map}" $names="{binaryLight,properties}" }method { $n
+ ame="bindPresenceSensor" $arguments="{fr.liglab.adele.icasa.device.pr
+ esence.PresenceSensor,java.util.Map}" $names="{presenceSensor,propert
+ ies}" }method { $name="unbindPresenceSensor" $arguments="{fr.liglab.a
+ dele.icasa.device.presence.PresenceSensor,java.util.Map}" $names="{pr
+ esenceSensor,properties}" }method { $name="bindDimmerLight" $argument
+ s="{fr.liglab.adele.icasa.device.light.DimmerLight,java.util.Map}" $n
+ ames="{dimmerLight,properties}" }method { $name="unbindDimmerLight" $
+ arguments="{fr.liglab.adele.icasa.device.light.DimmerLight,java.util.
+ Map}" $names="{dimmerLight,properties}" }method { $name="bindPhotoMet
+ er" $arguments="{fr.liglab.adele.icasa.device.light.Photometer,java.u
+ til.Map}" $names="{photometer,properties}" }method { $name="unbindPho
+ toMeter" $arguments="{fr.liglab.adele.icasa.device.light.Photometer,j
+ ava.util.Map}" $names="{photometer,properties}" }method { $name="stop
+ " }method { $name="start" }method { $name="deviceAdded" $arguments="{
+ fr.liglab.adele.icasa.device.GenericDevice}" $names="{arg0}" }method 
+ { $name="deviceEvent" $arguments="{fr.liglab.adele.icasa.device.Gener
+ icDevice,java.lang.Object}" $names="{arg0,arg1}" }method { $name="dev
+ icePropertyAdded" $arguments="{fr.liglab.adele.icasa.device.GenericDe
+ vice,java.lang.String}" $names="{arg0,arg1}" }method { $name="deviceP
+ ropertyRemoved" $arguments="{fr.liglab.adele.icasa.device.GenericDevi
+ ce,java.lang.String}" $names="{arg0,arg1}" }method { $name="deviceRem
+ oved" $arguments="{fr.liglab.adele.icasa.device.GenericDevice}" $name
+ s="{arg0}" }method { $name="devicePropertyModified" $arguments="{fr.l
+ iglab.adele.icasa.device.GenericDevice,java.lang.String,java.lang.Obj
+ ect,java.lang.Object}" $names="{device,propertyName,oldValue,newValue
+ }" }method { $name="updateLightByLocation" $arguments="{java.lang.Str
+ ing}" $names="{location}" }method { $name="checkMaxLightTurnedOn" $re
+ turn="int" $arguments="{java.lang.String}" $names="{location}" }metho
+ d { $name="turnOffAllLightsOfLocation" $arguments="{java.lang.String}
+ " $names="{location}" }method { $name="getBinaryLightFromLocation" $r
+ eturn="java.util.List" $arguments="{java.lang.String}" $names="{locat
+ ion}" }method { $name="getDimmerLightFromLocation" $return="java.util
+ .List" $arguments="{java.lang.String}" $names="{location}" }method { 
+ $name="getPresenceSensorFromLocation" $return="java.util.List" $argum
+ ents="{java.lang.String}" $names="{location}" }method { $name="getPho
+ toMeterFromLocation" $return="java.util.List" $arguments="{java.lang.
+ String}" $names="{location}" }method { $name="getSurfaceFromLocation"
+  $return="double" $arguments="{java.lang.String}" $names="{location}"
+  }method { $name="getMaximumNumberOfLightsToTurnOn" $return="int" }me
+ thod { $name="setMaximumNumberOfLightsToTurnOn" $arguments="{int}" $n
+ ames="{maximumNumberOfLightsToTurnOn}" }method { $name="getMaximumAll
+ owedEnergyInRoom" $return="double" }method { $name="setMaximumAllowed
+ EnergyInRoom" $arguments="{double}" $names="{maximumEnergy}" }method 
+ { $name="getTargetedIlluminance" $return="double" }method { $name="se
+ tTargetedIlluminance" $arguments="{double}" $names="{illuminance}" }m
+ ethod { $name="calculateParameterToTarget" $arguments="{java.lang.Str
+ ing}" $names="{location}" }}}
+

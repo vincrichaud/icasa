@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ipojo xmlns="org.apache.felix.ipojo">
+  <component classname="fr.esisar.cs511.followme.manager.impl.FollowMeManagerImpl" name="FollowMeManager">
+    <callback method="start" transition="validate"/>
+    <callback method="stop" transition="invalidate"/>
+    <requires optional="true" specification="fr.esisar.cs511.followme.service.spec.FollowMeConfiguration" field="maxLightConfiguration"/>
+    <provides specifications="fr.esisar.cs511.followme.service.spec.FollowMeAdministration"/>
+  </component>
+  <instance component="FollowMeManager" name="FollowMeManager"/>
+</ipojo>
