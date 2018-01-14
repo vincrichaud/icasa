@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ipojo xmlns="org.apache.felix.ipojo">
+  <component classname="fr.esisar.cs511.temperaturecontrol.manager.TemperatureManagerImpl" name="TemperatureManager">
+    <requires specification="fr.esisar.cs511.temperaturecontrol.services.TemperatureConfiguration" field="temperatureConfiguration"/>
+    <provides specifications="fr.esisar.cs511.temperaturecontrol.services.TemperatureAdministration"/>
+    <callback method="start" transition="validate"/>
+    <callback method="stop" transition="invalidate"/>
+  </component>
+  <instance component="TemperatureManager" name="TemperatureManager-1"/>
+</ipojo>

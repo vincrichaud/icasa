@@ -1,0 +1,63 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: TemperatureControlCommand
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-SymbolicName: TemperatureControlCommand
+Bundle-Version: 1.0.0.qualifier
+Created-By: iPOJO 1.12.1
+Import-Package: fr.esisar.cs511.temperaturecontrol.services, fr.liglab
+ .adele.icasa, fr.liglab.adele.icasa.access, fr.liglab.adele.icasa.acc
+ ess.command, fr.liglab.adele.icasa.application, fr.liglab.adele.icasa
+ .application.impl, fr.liglab.adele.icasa.application.impl.command, fr
+ .liglab.adele.icasa.application.remote, fr.liglab.adele.icasa.applica
+ tion.remote.util, fr.liglab.adele.icasa.clockservice, fr.liglab.adele
+ .icasa.clockservice.impl, fr.liglab.adele.icasa.clockservice.util, fr
+ .liglab.adele.icasa.command, fr.liglab.adele.icasa.command.handler, f
+ r.liglab.adele.icasa.commands, fr.liglab.adele.icasa.commands.impl, f
+ r.liglab.adele.icasa.common, fr.liglab.adele.icasa.common.impl, fr.li
+ glab.adele.icasa.common.xml.utils, fr.liglab.adele.icasa.dependency.m
+ anager.exception, fr.liglab.adele.icasa.device, fr.liglab.adele.icasa
+ .device.bathroomscale, fr.liglab.adele.icasa.device.box, fr.liglab.ad
+ ele.icasa.device.button, fr.liglab.adele.icasa.device.button.simulate
+ d, fr.liglab.adele.icasa.device.doorWindow, fr.liglab.adele.icasa.dev
+ ice.gasSensor, fr.liglab.adele.icasa.device.light, fr.liglab.adele.ic
+ asa.device.manager, fr.liglab.adele.icasa.device.motion, fr.liglab.ad
+ ele.icasa.device.power, fr.liglab.adele.icasa.device.presence, fr.lig
+ lab.adele.icasa.device.security, fr.liglab.adele.icasa.device.settopb
+ ox, fr.liglab.adele.icasa.device.sound, fr.liglab.adele.icasa.device.
+ sprinkler, fr.liglab.adele.icasa.device.temperature, fr.liglab.adele.
+ icasa.device.util, fr.liglab.adele.icasa.exception, fr.liglab.adele.i
+ casa.frontend.services, fr.liglab.adele.icasa.frontend.services.rest,
+  fr.liglab.adele.icasa.frontend.services.utils, fr.liglab.adele.icasa
+ .listener, fr.liglab.adele.icasa.location, fr.liglab.adele.icasa.loca
+ tion.impl, fr.liglab.adele.icasa.location.util, fr.liglab.adele.icasa
+ .remote.wisdom, fr.liglab.adele.icasa.remote.wisdom.util, fr.liglab.a
+ dele.icasa.service.location, fr.liglab.adele.icasa.service.preference
+ s, fr.liglab.adele.icasa.service.scheduler, fr.liglab.adele.icasa.ser
+ vice.zone.dimension.calculator, fr.liglab.adele.icasa.service.zone.si
+ ze.calculator, fr.liglab.adele.icasa.simulator, fr.liglab.adele.icasa
+ .simulator.listener, fr.liglab.adele.icasa.simulator.listener.util, f
+ r.liglab.adele.icasa.simulator.remote.wisdom.util, fr.liglab.adele.ic
+ asa.simulator.script.executor, fr.liglab.adele.icasa.simulator.servic
+ es, org.apache.felix.ipojo;version="[1.12.1,2.0.0)", org.apache.felix
+ .ipojo.architecture;version="[1.12.1,2.0.0)", org.json, org.osgi.serv
+ ice.cm;version=1.2, org.osgi.service.log;version=1.3
+Require-Bundle: TemperatureControlSpecifications;bundle-version="1.0.0
+ "
+iPOJO-Components: instance { $name="temperature.administration.command
+ " $component="fr.esisar.cs511.temperaturecontrol.command.TemperatureC
+ ommandImpl" }component { $name="fr.esisar.cs511.temperaturecontrol.co
+ mmand.TemperatureCommandImpl" $classname="fr.esisar.cs511.temperature
+ control.command.TemperatureCommandImpl" fr.liglab.adele.icasa.command
+ .handler:commandprovider { $namespace="temperature" fr.liglab.adele.i
+ casa.command.handler:command { $method="tooHigh" }fr.liglab.adele.ica
+ sa.command.handler:command { $method="tooLow" }}requires { $field="te
+ mperatureAdministration" }callback { $transition="invalidate" $method
+ ="stop" }callback { $transition="validate" $method="start" }manipulat
+ ion { $classname="fr.esisar.cs511.temperaturecontrol.command.Temperat
+ ureCommandImpl" field { $name="temperatureAdministration" $type="fr.e
+ sisar.cs511.temperaturecontrol.services.TemperatureAdministration" }m
+ ethod { $name="tooHigh" $arguments="{java.lang.String}" $names="{room
+ }" }method { $name="tooLow" $arguments="{java.lang.String}" $names="{
+ room}" }method { $name="stop" }method { $name="start" }}}
+
